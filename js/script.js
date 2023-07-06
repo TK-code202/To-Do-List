@@ -94,8 +94,6 @@ function attachTaskListeners() {
 
     $("#tickbox").on("click", ".checked", function () {
         let completed = toDoList.markAsDone(this.id);
-        // let incomplete = toDoList.markAsUnDone(this.id);
-        // $(".task-complete").toggleClass("toggle");
         $(".task-status").html(completed);
        
         
