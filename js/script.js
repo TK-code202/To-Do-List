@@ -4,15 +4,16 @@ function ToDoList() {
     this.currentId = 0;
 }
 
+ToDoList.prototype.assignId = function () {
+    this.currentId += 1;
+    return this.currentId;
+};
+
 ToDoList.prototype.addTasks = function (task) {
     task.id = this.assignId();
     this.tasks[task.id] = task;
 };
 
-ToDoList.prototype.assignId = function () {
-    this.currentId += 1;
-    return this.currentId;
-};
 
 ToDoList.prototype.findTask = function (id) {
     if (this.tasks[id] != undefined) {
@@ -21,7 +22,7 @@ ToDoList.prototype.findTask = function (id) {
     return false;
 };
 
-ToDoList.prototype.markAsDone = function (id) {
+ToDoList.prototype.markAsCompleted = function (id) {
     if (this.tasks[id] === undefined) {
         return false;
     }
@@ -51,9 +52,9 @@ function Task(name, date, time) {
     this.status = "Task Unaccomplished";
 }
 
-Task.prototype.taskName = function () {
-    return this.name;
-};
+// Task.prototype.taskName = function () {
+//     return this.name;
+// };
 
 
 
@@ -93,7 +94,7 @@ function attachTaskListeners() {
     });
 
     $("#tickbox").on("click", ".checked", function () {
-        let completed = toDoList.markAsDone(this.id);
+        let completed = toDoList.markAsCompleted(this.id);
         $(".task-status").html(completed);
        
         
