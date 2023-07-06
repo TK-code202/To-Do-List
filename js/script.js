@@ -31,15 +31,6 @@ ToDoList.prototype.markAsDone = function (id) {
     return task.status;
 }
 
-ToDoList.prototype.markAsUnDone = function (id) {
-    if (this.tasks[id] === undefined) {
-        return false;
-    }
-
-    let task = this.tasks[id];
-    task.status = "Task Unaccomplished";
-    return task.status;
-}
 
 
 ToDoList.prototype.deleteTask = function (id) {
